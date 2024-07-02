@@ -2,7 +2,7 @@ package geecache
 
 import (
 	"fmt"
-	"geecache/model"
+	"geecache/geecache/model"
 	"log"
 	"sync"
 )

@@ -9,6 +9,7 @@ The resources of a single server are limited. With the increase in business volu
 
 ## lru.go
 LRU mainly implement the based data structure
+```
   +----+    +----+    +----+    +----+    +----+
   | k1 |    | k2 |    | k3 |    | k4 |    | k5 |
   +----+    +----+    +----+    +----+    +----+
@@ -18,7 +19,7 @@ LRU mainly implement the based data structure
 | n1 | <-> | n2 | <-> | n3 | <-> | n4 | <-> | n5 |
 +----+     +----+     +----+     +----+     +----+
 Head                                         End
-
+```
 - k.. are map, storing key and value. 
 - n.. are double linked listed. And the element in double linked listed is as following. The advantage of storing key in linked list is that when delete the element in linked list, we can use the key stored in linked list to delte the kv in map
 ```
