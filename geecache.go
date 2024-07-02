@@ -38,7 +38,7 @@ func NewGroup(name string, cacheBytes int64, getter Getter) *Group {
 	g := &Group{
 		name:      name,
 		getter:    getter,
-		mainCache: cache{cacheBytyes: cacheBytes},
+		mainCache: cache{cacheBytes: cacheBytes},
 	}
 	groups[name] = g
 	return g
@@ -46,8 +46,6 @@ func NewGroup(name string, cacheBytes int64, getter Getter) *Group {
 
 func GetGroup(name string) *Group {
 	mu.RLock()
-	defer mu.Unlock()
-
 	g := groups[name]
 	mu.RUnlock()
 	return g

@@ -7,17 +7,17 @@ import (
 )
 
 type cache struct {
-	mu          sync.Mutex
-	lru         *lru.Cache
-	cacheBytyes int64
+	mu         sync.Mutex
+	lru        *lru.Cache
+	cacheBytes int64
 }
 
 func (c *cache) add(key string, value model.ByteView) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
-	if c.lru != nil {
-		c.lru = lru.New(c.cacheBytyes, nil)
+	if c.lru == nil {
+		c.lru = lru.New(c.cacheBytes, nil)
 	}
 
 	c.lru.Add(key, &value)
