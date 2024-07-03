@@ -30,3 +30,13 @@ type entry struct {
 ```
 ## cache.go
 cache is a wrapper of the lru, with added locks to achieve concurrency protection
+
+## Overall Procedure
+```
+                                  Yes
+Receive key --> Check if cached -----> Return cached value ⑴
+                |  No                                       Yes
+                |-----> Should retrieve from remote node? -----> Interact with remote node --> Return cached value ⑵
+                            |  No
+                            |-----> Call `callback function` to retrieve value and add to cache --> Return cached value ⑶
+```
